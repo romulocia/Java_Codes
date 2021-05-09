@@ -14,7 +14,7 @@ public class homework {
         Double[] altura = new Double[3];
 
         for (int i = 0; i < altura.length; i++) {
-            System.out.print("\nAltura " + (i+1) + ": ");
+            System.out.print("\nAltura " + (i + 1) + ": ");
             altura[i] = ler.nextDouble();
 
             if (altura[i] > maiorAltura) {
