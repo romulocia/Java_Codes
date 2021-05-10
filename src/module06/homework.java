@@ -31,6 +31,7 @@ public class homework {
             }
             System.out.println("");
         }
+        scanner.close();
     }
 }
 
