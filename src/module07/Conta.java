@@ -1,10 +1,10 @@
 package module07;
 
-public class Conta {
+public abstract class Conta {
     private int numero;
     private int agencia;
     private String banco;
-    private double saldo;
+    protected double saldo;
 
     public int getNumero() {
         return numero;
@@ -30,9 +30,7 @@ public class Conta {
         this.banco = banco;
     }
 
-    public double getSaldo() {
-        return saldo;
-    }
+    public abstract double getSaldo();
 
     public void setSaldo(double saldo) {
         this.saldo = saldo;
