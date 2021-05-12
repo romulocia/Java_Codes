@@ -5,6 +5,24 @@ public abstract class Conta {
     private int agencia;
     private String banco;
     protected double saldo;
+    protected double sacar;
+    protected double depositar;
+
+    public double getSacar() {
+        return sacar;
+    }
+
+    public void setSacar(double sacar) {
+        this.sacar = sacar;
+    }
+
+    public double getDepositar() {
+        return depositar;
+    }
+
+    public void setDepositar(double depositar) {
+        this.depositar = depositar;
+    }
 
     public int getNumero() {
         return numero;

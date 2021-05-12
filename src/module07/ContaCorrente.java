@@ -18,4 +18,12 @@ public class ContaCorrente extends Conta {
     public double getSaldo() {
         return this.chequeEspecial + this.saldo;
     }
+
+    public double getSacar() {
+        return this.saldo - this.sacar;
+    }
+
+    public double getDeposiar() {
+        return this.saldo + this.depositar;
+    }
 }
