@@ -1,29 +1,35 @@
 package module07;
 
 public class ContaCorrente extends Conta {
-    private final double chequeEspecial;
+    private double chequeEspecial;
 
-    public ContaCorrente(int numero, int agencia, String banco, double saldo, double sacar, double depositar, double chequeEspecial) {
-        super(numero, agencia, banco, saldo, sacar, depositar);
+    public ContaCorrente(int numero, int agencia, String banco, double saldo, double chequeEspecial) {
+        super(numero, agencia, banco, saldo);
         this.chequeEspecial = chequeEspecial;
     }
 
     @Override
     public String toString() {
-        return "ContaCorrente{" +
-                "chequeEspecial=" + chequeEspecial +
+        return  "Conta Corrente {" +
+                super.toString() +
+                "Cheque Especial = " + chequeEspecial +
                 '}';
     }
 
-    public double getSacar() {
-        if (this.sacar <= this.saldo + this.chequeEspecial + this.depositar) {
-            return this.sacar;
-        } else {
-            return this.sacar = 0;
-        }
+    public double getSaldo() {
+        return this.saldo + this.chequeEspecial;
     }
 
-    public double getSaldo() {
-        return this.saldo + this.chequeEspecial + this.depositar - getSacar();
+    public boolean sacar(double quantia) {
+        double disponivel = this.chequeEspecial + this.saldo;
+        if (quantia >= disponivel) {
+            System.out.println("Seu saldo é insuficiente para realizar a transação.");
+            return false;
+        } else {
+            this.saldo -= quantia;
+            System.out.println("Saque de R$ " + quantia + " foi realizado com sucesso.");
+            System.out.println("Seu saldo atualizado é R$ " + getSaldo());
+            return true;
+        }
     }
 }

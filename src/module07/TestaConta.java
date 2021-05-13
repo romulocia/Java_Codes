@@ -1,18 +1,30 @@
 package module07;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class TestaConta {
     public static void main(String[] args) {
+        Calendar data = Calendar.getInstance();
+        SimpleDateFormat formatarData = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
-        ContaCorrente cc1 = new ContaCorrente(11, 1, "Banco 01", 100.0, 20.0, 10.0, 500.0);
-        System.out.println(cc1);
-        System.out.println("O saldo da conta corrente é R$ " + cc1.getSaldo());
+        Conta contas[] = new Conta[3];
 
-        ContaPoupanca cp1 = new ContaPoupanca(22, 2, "Banco 01", 100.0, 20.0, 10.0, 30 ,0.1);
-        System.out.println(cp1);
-        System.out.println("O saldo da conta poupança é R$ " + cp1.getSaldo());
+        ContaCorrente cc = new ContaCorrente(1, 1, "Banco 01", 100.0, 200.0);
+        ContaPoupanca cp = new ContaPoupanca(2, 1, "Banco 01", 100.0, 20, 0.05);
+        ContaSalario cs = new ContaSalario(3, 1, "Banco 01", 100.0, 3);
 
-        ContaSalario cs1 = new ContaSalario(33, 3, "Banco 01", 100.0, 20.0, 10.0, 3);
-        System.out.println(cs1);
-        System.out.println("O saldo da conta salario é R$ " + cs1.getSaldo());
+        contas[0] = cc;
+        contas[1] = cp;
+        contas[2] = cs;
+
+        System.out.println("Obtendo o saldo das contas:");
+        System.out.println("-------------------------------------------------------------");
+        for (Conta conta:contas) {
+            System.out.println("Data: " + formatarData.format(data.getTime()));
+            System.out.println(conta);
+            System.out.println("Saldo atual: R$ " + conta.getSaldo());
+            System.out.println("-------------------------------------------------------------");
+        }
     }
 }
