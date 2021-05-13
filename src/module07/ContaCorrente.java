@@ -3,8 +3,8 @@ package module07;
 public class ContaCorrente extends Conta {
     private final double chequeEspecial;
 
-    public ContaCorrente(int numero, int agencia, String banco, double saldo, double chequeEspecial) {
-        super(numero, agencia, banco, saldo);
+    public ContaCorrente(int numero, int agencia, String banco, double saldo, double sacar, double depositar, double chequeEspecial) {
+        super(numero, agencia, banco, saldo, sacar, depositar);
         this.chequeEspecial = chequeEspecial;
     }
 
@@ -15,15 +15,15 @@ public class ContaCorrente extends Conta {
                 '}';
     }
 
-    public double getSaldo() {
-        return this.chequeEspecial + this.saldo;
-    }
-
     public double getSacar() {
-        return this.saldo - this.sacar;
+        if (this.sacar <= this.saldo + this.chequeEspecial + this.depositar) {
+            return this.sacar;
+        } else {
+            return this.sacar = 0;
+        }
     }
 
-    public double getDeposiar() {
-        return this.saldo + this.depositar;
+    public double getSaldo() {
+        return this.saldo + this.chequeEspecial + this.depositar - getSacar();
     }
 }
