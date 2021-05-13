@@ -10,7 +10,7 @@ public class ContaSalario extends Conta{
     }
 
     public double getSaldo() {
-        return this.saldo + this.depositar - this.sacar ;
+        return this.saldo + this.depositar - getSacar() ;
     }
 
     public double getSacar() {

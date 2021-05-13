@@ -11,7 +11,7 @@ public class TestaConta {
         System.out.println(cp1);
         System.out.println("O saldo da conta poupança é R$ " + cp1.getSaldo());
 
-        ContaSalario cs1 = new ContaSalario(33, 3, "Banco 01", 100.0, 20.0, 10.0, 2);
+        ContaSalario cs1 = new ContaSalario(33, 3, "Banco 01", 100.0, 20.0, 10.0, 3);
         System.out.println(cs1);
         System.out.println("O saldo da conta salario é R$ " + cs1.getSaldo());
     }
