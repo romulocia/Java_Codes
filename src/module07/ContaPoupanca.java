@@ -1,10 +1,16 @@
 package module07;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class ContaPoupanca extends Conta{
-    private int diaAniversario;
+    Calendar data = Calendar.getInstance();
+    SimpleDateFormat formatarData = new SimpleDateFormat("dd");
+
+    private String diaAniversario;
     private double taxaDeJuros;
 
-    public ContaPoupanca(int numero, int agencia, String banco, double saldo,int diaAniversario, double taxaDeJuros) {
+    public ContaPoupanca(int numero, int agencia, String banco, double saldo,String diaAniversario, double taxaDeJuros) {
         super(numero, agencia, banco, saldo);
         this.diaAniversario = diaAniversario;
         this.taxaDeJuros = taxaDeJuros;
@@ -20,7 +26,8 @@ public class ContaPoupanca extends Conta{
     }
 
     public double getSaldo(){
-        if (!(this.diaAniversario < 20)) {
+        String diaAtual = formatarData.format(data.getTime());
+        if (diaAtual.equals(diaAniversario)) {
             return this.saldo + this.saldo * this.taxaDeJuros;
         } else {
             return this.saldo;
