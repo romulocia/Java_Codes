@@ -7,10 +7,10 @@ public class ContaPoupanca extends Conta{
     Calendar data = Calendar.getInstance();
     SimpleDateFormat formatarData = new SimpleDateFormat("dd");
 
-    private String diaAniversario;
+    private int diaAniversario;
     private double taxaDeJuros;
 
-    public ContaPoupanca(int numero, int agencia, String banco, double saldo,String diaAniversario, double taxaDeJuros) {
+    public ContaPoupanca(int numero, int agencia, String banco, double saldo,int diaAniversario, double taxaDeJuros) {
         super(numero, agencia, banco, saldo);
         this.diaAniversario = diaAniversario;
         this.taxaDeJuros = taxaDeJuros;
@@ -27,7 +27,8 @@ public class ContaPoupanca extends Conta{
 
     public double getSaldo(){
         String diaAtual = formatarData.format(data.getTime());
-        if (diaAtual.equals(diaAniversario)) {
+        int diaAtualConvertido = Integer.parseInt(diaAtual);
+        if (diaAtualConvertido >= diaAniversario) {
             return this.saldo + this.saldo * this.taxaDeJuros;
         } else {
             return this.saldo;

@@ -11,7 +11,7 @@ public class TestaConta {
         Conta contas[] = new Conta[3];
 
         ContaCorrente cc = new ContaCorrente(1, 1, "Banco 01", 100.0, 200.0);
-        ContaPoupanca cp = new ContaPoupanca(2, 1, "Banco 01", 100.0, "30", 0.05);
+        ContaPoupanca cp = new ContaPoupanca(2, 1, "Banco 01", 100.0, 15, 0.05);
         ContaSalario cs = new ContaSalario(3, 1, "Banco 01", 100.0, 3);
 
         contas[0] = cc;
