@@ -36,7 +36,7 @@ public class ContaPoupanca extends Conta{
 
     @Override
     public boolean sacar(double quantia) {
-        if (quantia >= getSaldo()) {
+        if (quantia > getSaldo()) {
             System.out.println("Seu saldo é insuficiente para realizar a transação.");
             return false;
         } else {

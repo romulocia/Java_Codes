@@ -22,7 +22,7 @@ public class ContaCorrente extends Conta {
 
     public boolean sacar(double quantia) {
         double disponivel = this.chequeEspecial + this.saldo;
-        if (quantia >= disponivel) {
+        if (quantia > disponivel) {
             System.out.println("Seu saldo é insuficiente para realizar a transação.");
             return false;
         } else {
