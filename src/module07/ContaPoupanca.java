@@ -26,9 +26,9 @@ public class ContaPoupanca extends Conta{
     }
 
     public double getSaldo(){
-        String diaAtual = formatarData.format(data.getTime());
-        int diaAtualConvertido = Integer.parseInt(diaAtual);
-        if (diaAtualConvertido >= diaAniversario) {
+        String dia = formatarData.format(data.getTime());
+        int diaConvertido = Integer.parseInt(dia);
+        if (diaConvertido >= this.diaAniversario) {
             return this.saldo + this.saldo * this.taxaDeJuros;
         } else {
             return this.saldo;
