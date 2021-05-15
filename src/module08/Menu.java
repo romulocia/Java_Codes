@@ -11,34 +11,34 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         listaClientes = new ArrayList();
         MapContas = new HashMap();
-        int input;
+        int opcao;
 
         do {
             System.out.println("--------------------------------------------" +
                     "\n*** Banco Mentorama ***" +
                     "\nMenu de opções:" +
-                    "\n1. Criar conta" +
-                    "\n2. Sacar" +
-                    "\n3. Depositar" +
-                    "\n4. Criar Cliente" +
-                    "\n5. Transferir Valores" +
-                    "\n6. Mostrar montante disponível nas contas" +
-                    "\n7. Sair" +
-                    "\n--------------------------------------------" +
-                    "\nEscolha a opção desejada:");
-            input = scanner.nextInt();
-            switch (input) {
+                    "\n[1]. Criar conta" +
+                    "\n[2]. Sacar" +
+                    "\n[3]. Depositar" +
+                    "\n[4]. Criar Cliente" +
+                    "\n[5]. Transferir Valores" +
+                    "\n[6]. Mostrar montante disponível nas contas" +
+                    "\n[7]. Sair" +
+                    "\nEscolha a opção desejada:" +
+                    "\n-----------------------------------------------------");
+            opcao = scanner.nextInt();
+            switch (opcao) {
                 case 1:
-                    System.out.println("Selecione o tipo de conta que você quer criar:" +
-                            "\n1. Conta Corrente" +
-                            "\n2. Conta Poupança" +
-                            "\n3. Conta Salário");
-                    input = scanner.nextInt();
+                    System.out.println("Escolha o tipo de conta a ser criada:" +
+                            "\n[1]. Conta Corrente" +
+                            "\n[2]. Conta Poupança" +
+                            "\n[3]. Conta Salário");
+                    opcao = scanner.nextInt();
                     int numero, agencia;
                     double saldo, chequeEspecial;
                     String banco, dataAniversario;
 
-                    switch (input) {
+                    switch (opcao) {
                         case 1:
                             Cliente clienteValidado = clienteValido();
                             if (clienteValidado != null) {
@@ -156,7 +156,7 @@ public class Menu {
                     System.out.println("Opção Inválida.");
                     break;
             }
-        } while (input != 7);
+        } while (opcao != 7);
     }
 
     public static Cliente clienteValido() {
@@ -213,5 +213,4 @@ public class Menu {
                     .sum();
         } return sum - sumCheque;
     }
-
 }

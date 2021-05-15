@@ -1,6 +1,6 @@
 package module08;
 
-public abstract class Conta {
+public abstract class Conta implements Tributaveis {
     private int numero;
     private int agencia;
     private String banco;
