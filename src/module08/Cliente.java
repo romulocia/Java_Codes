@@ -39,7 +39,7 @@ public class Cliente {
     public String toString() {
         return "Cliente {" +
                 "Nome completo = " + nome + " " + sobrenome +
-                ", Cpf = " + cpf +
+                ", CPF = " + cpf +
                 '}';
     }
 }

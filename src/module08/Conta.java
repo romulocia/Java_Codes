@@ -1,20 +1,30 @@
 package module08;
 
-public abstract class Conta implements Tributaveis {
-    private int numero;
-    private int agencia;
+public abstract class Conta {
     private String banco;
+    private int numeroDaConta;
+    private int agencia;
     protected double saldo;
-    protected double saque;
-    protected double deposito;
-    protected double transferencia;
+    protected double depositar;
+    protected double sacar;
+    protected double tranferir;
+    protected double taxaTransferencia;
+    protected double taxaSaque;
 
-    public int getNumero() {
-        return numero;
+    public String getBanco() {
+        return banco;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setBanco(String banco) {
+        this.banco = banco;
+    }
+
+    public int getNumeroDaConta() {
+        return numeroDaConta;
+    }
+
+    public void setNumeroDaConta(int numeroDaConta) {
+        this.numeroDaConta = numeroDaConta;
     }
 
     public int getAgencia() {
@@ -25,64 +35,68 @@ public abstract class Conta implements Tributaveis {
         this.agencia = agencia;
     }
 
-    public String getBanco() {
-        return banco;
-    }
-
-    public void setBanco(String banco) {
-        this.banco = banco;
-    }
-
     public double getSaldo() {
-        return this.saldo;
+        return saldo;
     }
 
     public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
 
-    public abstract boolean getSaque(double valor);
-
-    public void setSaque(double saque) {
-        this.saque = saque;
+    public double getDepositar() {
+        return depositar;
     }
 
-    public boolean getDeposito(double valor){
-        saldo += valor;
-        System.out.println("Depósito feito com sucesso");
-        System.out.println("Você depositou R$" + valor);
-        System.out.println("O saldo atualizado da conta é R$" + saldo);
-        return true;
+    public void setDepositar(double depositar) {
+        this.depositar = depositar;
     }
 
-    public void setDeposito(double deposito) {
-        this.deposito = deposito;
+    public double getSacar() {
+        return sacar;
     }
 
-    public abstract boolean getTransferencia(Conta destino, double valor);
-
-    public void setTransferencia(double transferencia) {
-        this.transferencia = transferencia;
+    public void setSacar(double sacar) {
+        this.sacar = sacar;
     }
 
-    public Conta(int numero, int agencia, String banco, double saldo) {
-        this.numero = numero;
-        this.agencia = agencia;
+    public double getTranferir() {
+        return tranferir;
+    }
+
+    public void setTranferir(double tranferir) {
+        this.tranferir = tranferir;
+    }
+
+    public double getTaxaTransferencia() {
+        return taxaTransferencia;
+    }
+
+    public void setTaxaTransferencia(double taxaTransferencia) {
+        this.taxaTransferencia = taxaTransferencia;
+    }
+
+    public double getTaxaSaque() {
+        return taxaSaque;
+    }
+
+    public void setTaxaSaque(double taxaSaque) {
+        this.taxaSaque = taxaSaque;
+    }
+
+    public Conta(String banco, int numeroDaConta, int agencia, double saldo) {
         this.banco = banco;
+        this.numeroDaConta = numeroDaConta;
+        this.agencia = agencia;
         this.saldo = saldo;
     }
 
     @Override
     public String toString() {
-        return "Conta{" +
-                "numero=" + numero +
-                ", agencia=" + agencia +
-                ", banco='" + banco + '\'' +
-                ", saldo=" + saldo +
+        return "Conta {" +
+                "Banco = " + banco +
+                ", número = " + numeroDaConta +
+                ", agência = " + agencia +
+                ", saldo = " + saldo +
                 '}';
     }
-    public double getValorTaxa() {
-        return 10.0;
-    }
-
 }
