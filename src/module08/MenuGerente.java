@@ -31,14 +31,12 @@ public class MenuGerente {
             switch (opcao) {
                 case 1:
                     scanner.nextLine();
-                    System.out.println("Digite o seu primeiro nome:");
+                    System.out.println("Digite o nome do cliente:");
                     String nome = scanner.nextLine();
-                    System.out.println("Digite o seu sobrenome:");
-                    String sobrenome = scanner.nextLine();
-                    System.out.println("Digite o seu cpf:");
+                    System.out.println("Digite o CPF do cliente:");
                     long cpf = scanner.nextLong();
 
-                    listaClientes.add(new Cliente(nome, sobrenome, cpf));
+                    listaClientes.add(new Cliente(nome, cpf));
                     Iterator it = listaClientes.iterator();
                     System.out.println("\nLista dos Clientes Cadastrados:");
                     while (it.hasNext()) {
@@ -53,7 +51,7 @@ public class MenuGerente {
                             "\n[3]. Conta Salário");
 
                     opcao = scanner.nextInt();
-                    int numeroDaConta = 0, agencia;
+                    int numeroDaConta = 1000, agencia;
                     double saldo, chequeEspecial;
                     String banco = NOME_BANCO, dataAniversario;
 

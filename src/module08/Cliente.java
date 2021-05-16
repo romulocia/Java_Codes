@@ -1,15 +1,13 @@
 package module08;
 
 public class Cliente {
-    private String nome, sobrenome;
+    private String nome;
     private long cpf;
 
-    public Cliente(String nome, String sobrenome, long cpf) {
+    public Cliente(String nome, long cpf) {
         this.nome = nome;
-        this.sobrenome = sobrenome;
         this.cpf = cpf;
     }
-
 
     public String getNome() {
         return nome;
@@ -17,14 +15,6 @@ public class Cliente {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getSobrenome() {
-        return sobrenome;
-    }
-
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
     }
 
     public long getCpf() {
@@ -37,8 +27,8 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente {" +
-                "Nome completo = " + nome + " " + sobrenome +
+        return "\nCliente {" +
+                "Nome = " + nome +
                 ", CPF = " + cpf +
                 '}';
     }
