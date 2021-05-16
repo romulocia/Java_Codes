@@ -5,11 +5,8 @@ public abstract class Conta {
     private int numeroDaConta;
     private int agencia;
     protected double saldo;
-    protected double depositar;
-    protected double sacar;
     protected double tranferir;
     protected double taxaTransferencia;
-    protected double taxaSaque;
 
     public String getBanco() {
         return banco;
@@ -43,15 +40,7 @@ public abstract class Conta {
         this.saldo = saldo;
     }
 
-    public double getDepositar() {
-        return depositar;
-    }
-
-    public void setDepositar(double depositar) {
-        this.depositar = depositar;
-    }
-
-    public double getSacar() {
+    public double getSacar(double valor) {
         return sacar;
     }
 
@@ -75,12 +64,10 @@ public abstract class Conta {
         this.taxaTransferencia = taxaTransferencia;
     }
 
-    public double getTaxaSaque() {
-        return taxaSaque;
-    }
+    public abstract boolean sacar(double valor);
 
-    public void setTaxaSaque(double taxaSaque) {
-        this.taxaSaque = taxaSaque;
+    public void depositar(double valor) {
+        this.saldo += valor;
     }
 
     public Conta(String banco, int numeroDaConta, int agencia, double saldo) {
