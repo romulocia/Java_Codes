@@ -2,7 +2,7 @@ package module08;
 
 import java.util.*;
 
-public class Menu {
+public class MenuGerente {
     private static final String NOME_BANCO = "Mentorama";
     protected static ArrayList<Cliente> listaClientes;
     protected static ArrayList<ContaCorrente> listaContaCorrente;

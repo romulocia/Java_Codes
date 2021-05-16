@@ -5,7 +5,6 @@ public abstract class Conta {
     private int numeroDaConta;
     private int agencia;
     protected double saldo;
-    protected double tranferir;
     protected double taxaTransferencia;
 
     public String getBanco() {
@@ -32,32 +31,8 @@ public abstract class Conta {
         this.agencia = agencia;
     }
 
-    public double getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
-    }
-
-    public double getSacar(double valor) {
-        return sacar;
-    }
-
-    public void setSacar(double sacar) {
-        this.sacar = sacar;
-    }
-
-    public double getTranferir() {
-        return tranferir;
-    }
-
-    public void setTranferir(double tranferir) {
-        this.tranferir = tranferir;
-    }
-
     public double getTaxaTransferencia() {
-        return taxaTransferencia;
+        return 1.25;
     }
 
     public void setTaxaTransferencia(double taxaTransferencia) {
@@ -66,8 +41,12 @@ public abstract class Conta {
 
     public abstract boolean sacar(double valor);
 
+    public abstract boolean transferir(Conta emissor, Conta destino, double valor);
+
     public void depositar(double valor) {
         this.saldo += valor;
+        System.out.println("Depósito de R$ " + valor + " realizado com sucesso");
+        System.out.println("O saldo atualizado da conta é R$" + saldo);
     }
 
     public Conta(String banco, int numeroDaConta, int agencia, double saldo) {
@@ -79,11 +58,11 @@ public abstract class Conta {
 
     @Override
     public String toString() {
-        return "Conta {" +
+        return
                 "Banco = " + banco +
-                ", número = " + numeroDaConta +
-                ", agência = " + agencia +
-                ", saldo = " + saldo +
-                '}';
+                ", Número = " + numeroDaConta +
+                ", Agência = " + agencia +
+                ", Saldo = " + saldo +
+                ", ";
     }
 }
