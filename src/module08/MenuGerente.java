@@ -30,6 +30,7 @@ public class MenuGerente {
             opcao = scanner.nextInt();
             System.out.println("--------------------------------------------");
             switch (opcao) {
+                Conta conta = contaValida();
                 case 1:
                     scanner.nextLine();
                     System.out.println("Digite o nome do cliente:");
@@ -122,7 +123,7 @@ public class MenuGerente {
                     break;
 
                 case 4:
-                    Conta conta = contaValida();
+                    conta = contaValida();
                     if (conta != null) {
                         System.out.println("Operação saque selecionada.");
                         System.out.println("Digite o valor a ser retirado:");

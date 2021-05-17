@@ -24,7 +24,7 @@ public abstract class Conta {
 
     public abstract boolean getSaque(double valor);
 
-    public boolean getDeposito(double valor){
+    public static boolean getDeposito(double valor){
         saldo += valor;
         System.out.println("Depósito de R$ " + valor + " realizado com sucesso");
         System.out.println("O saldo atualizado da conta é R$" + saldo);
