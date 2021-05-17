@@ -30,7 +30,6 @@ public class MenuGerente {
             opcao = scanner.nextInt();
             System.out.println("--------------------------------------------");
             switch (opcao) {
-                Conta conta = contaValida();
                 case 1:
                     scanner.nextLine();
                     System.out.println("Digite o nome do cliente:");
@@ -47,78 +46,90 @@ public class MenuGerente {
                     break;
 
                 case 2:
-                    System.out.println("Escolha o tipo de conta a ser criada:" +
-                            "\n[1] Conta Corrente" +
-                            "\n[2] Conta Poupança" +
-                            "\n[3] Conta Salário");
+                    do {
+                        System.out.println("Escolha o tipo de conta a ser criada:" +
+                                "\n[1] Conta Corrente" +
+                                "\n[2] Conta Poupança" +
+                                "\n[3] Conta Salário" +
+                                "\n[4] Voltar ao Menu principal");
 
-                    opcao = scanner.nextInt();
-                    int numeroDaConta = 1000, agencia, quantidadeDeSaques = 3;
-                    double saldo, chequeEspecial;
-                    String banco = NOME_BANCO, dataAniversario;
+                        opcao = scanner.nextInt();
+                        int numeroDaConta = 1000, agencia, quantidadeDeSaques = 3;
+                        double saldo, chequeEspecial;
+                        String banco = NOME_BANCO, dataAniversario;
 
-                    switch (opcao) {
-                        case 1:
-                            Cliente clienteValidado = clienteValido();
-                            if (clienteValidado != null) {
-                                numeroDaConta += 1;
-                                System.out.println("Digite o número da agência:");
-                                agencia = scanner.nextInt();
-                                System.out.println("Digite o saldo inicial:");
-                                saldo = scanner.nextDouble();
-                                System.out.println("Digite o valor do cheque especial:");
-                                chequeEspecial = scanner.nextDouble();
+                        switch (opcao) {
+                            case 1:
+                                Cliente clienteValidado = clienteValido();
+                                if (clienteValidado != null) {
+                                    numeroDaConta += 1;
+                                    System.out.println("Digite o número da agência:");
+                                    agencia = scanner.nextInt();
+                                    System.out.println("Digite o saldo inicial:");
+                                    saldo = scanner.nextDouble();
+                                    System.out.println("Digite o valor do cheque especial:");
+                                    chequeEspecial = scanner.nextDouble();
 
-                                MapContas.put(new ContaCorrente(banco, numeroDaConta, agencia, saldo, chequeEspecial), clienteValidado);
-                                for (Map.Entry<Conta, Cliente> listaContas : MapContas.entrySet()) {
-                                    System.out.println(listaContas.getKey() + "\t\t" + listaContas.getValue());
+                                    MapContas.put(new ContaCorrente(banco, numeroDaConta, agencia, saldo, chequeEspecial), clienteValidado);
+                                    for (Map.Entry<Conta, Cliente> listaContas : MapContas.entrySet()) {
+                                        System.out.println(listaContas.getKey() + "\t\t" + listaContas.getValue());
+                                    }
                                 }
-                            }
-                            break;
+                                break;
 
-                        case 2:
-                            clienteValidado = clienteValido();
-                            if (clienteValidado != null) {
-                                numeroDaConta += 1;
-                                dataAniversario = String.valueOf(LocalDate.now());
-                                System.out.println("Digite o numero da agencia:");
-                                agencia = scanner.nextInt();
-                                scanner.nextLine();
-                                System.out.println("Digite o saldo inicial:");
-                                saldo = scanner.nextDouble();
+                            case 2:
+                                clienteValidado = clienteValido();
+                                if (clienteValidado != null) {
+                                    numeroDaConta += 1;
+                                    dataAniversario = String.valueOf(LocalDate.now());
+                                    System.out.println("Digite o numero da agencia:");
+                                    agencia = scanner.nextInt();
+                                    scanner.nextLine();
+                                    System.out.println("Digite o saldo inicial:");
+                                    saldo = scanner.nextDouble();
 
-                                MapContas.put(new ContaPoupanca(banco, numeroDaConta, agencia, saldo, dataAniversario), clienteValidado);
-                                for (Map.Entry<Conta, Cliente> listaContas : MapContas.entrySet()) {
-                                    System.out.println(listaContas.getKey() + "\t\t" + listaContas.getValue());
+                                    MapContas.put(new ContaPoupanca(banco, numeroDaConta, agencia, saldo, dataAniversario), clienteValidado);
+                                    for (Map.Entry<Conta, Cliente> listaContas : MapContas.entrySet()) {
+                                        System.out.println(listaContas.getKey() + "\t\t" + listaContas.getValue());
+                                    }
                                 }
-                            }
-                            break;
+                                break;
 
-                        case 3:
-                            clienteValidado = clienteValido();
-                            if (clienteValidado != null) {
-                                numeroDaConta += 1;
-                                System.out.println("Digite o numero da agencia:");
-                                agencia = scanner.nextInt();
-                                scanner.nextLine();
-                                System.out.println("Digite o saldo inicial:");
-                                saldo = scanner.nextDouble();
+                            case 3:
+                                clienteValidado = clienteValido();
+                                if (clienteValidado != null) {
+                                    numeroDaConta += 1;
+                                    System.out.println("Digite o numero da agencia:");
+                                    agencia = scanner.nextInt();
+                                    scanner.nextLine();
+                                    System.out.println("Digite o saldo inicial:");
+                                    saldo = scanner.nextDouble();
 
-                                MapContas.put(new ContaSalario(banco, numeroDaConta, agencia, saldo, quantidadeDeSaques), clienteValidado);
-                                for (Map.Entry<Conta, Cliente> listaContas : MapContas.entrySet()) {
-                                    System.out.println(listaContas.getKey() + "\t\t" + listaContas.getValue());
+                                    MapContas.put(new ContaSalario(banco, numeroDaConta, agencia, saldo, quantidadeDeSaques), clienteValidado);
+                                    for (Map.Entry<Conta, Cliente> listaContas : MapContas.entrySet()) {
+                                        System.out.println(listaContas.getKey() + "\t\t" + listaContas.getValue());
+                                    }
                                 }
-                            }
-                    }
+                                break;
+
+                            case 4:
+                                scanner.close();
+                                break;
+
+                            default:
+                                System.out.println("Opção Inválida.");
+                                break;
+                        }
+                    } while (opcao != 4);
                     break;
 
                 case 3:
                     System.out.println("Operação depósito selecionada.");
-                    conta = contaValida();
+                    Conta conta = contaValida();
                     if (conta != null) {
                         System.out.println("Digite o valor a ser retirado:");
                         int valor = scanner.nextInt();
-                        Conta.getDeposito(valor);
+                        conta.getDeposito(valor);
                     }
                     break;
 
@@ -129,18 +140,19 @@ public class MenuGerente {
                         System.out.println("Digite o valor a ser retirado:");
                         int valor = scanner.nextInt();
                         conta.getSaque(valor);
-                    } break;
+                    }
+                    break;
 
                 case 5:
-                    System.out.println("Operação transferência selecionada" +
-                            "\nDigite as informações da sua conta");
+                    System.out.println("Operação transferência selecionada");
+                    System.out.println("Digite as informações da conta emissora");
                     conta = contaValida();
                     if (conta != null) {
                         System.out.println("Digite o valor a ser transferido:");
                         int valor = scanner.nextInt();
                         System.out.println("Digite as informações da conta de destino");
                         Conta destino = contaValida();
-                        conta.getTransferencia(emissor, destino, valor);
+                        conta.getTransferencia(destino, valor);
                     }
                     break;
                 case 6:

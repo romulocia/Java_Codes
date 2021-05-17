@@ -24,14 +24,14 @@ public abstract class Conta {
 
     public abstract boolean getSaque(double valor);
 
-    public static boolean getDeposito(double valor){
+    public boolean getDeposito(double valor){
         saldo += valor;
         System.out.println("Depósito de R$ " + valor + " realizado com sucesso");
         System.out.println("O saldo atualizado da conta é R$" + saldo);
         return true;
     }
 
-    public abstract boolean getTransferencia(Conta emissor, Conta destino, double valor);
+    public abstract boolean getTransferencia(Conta destino, double valor);
 
     public double getTaxaTransferencia() {
         return 1.25;
