@@ -1,30 +1,35 @@
 package module08;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class ContaPoupanca extends Conta {
-    Calendar data = Calendar.getInstance();
-    SimpleDateFormat formatarData = new SimpleDateFormat("dd");
 
     public static final double TAXA_RENDIMENTO_MENSAL = 0.05;
-    private int diaDoRendimento;
-    public ContaPoupanca(String banco, int numeroDaConta, int agencia, double saldo, int diaDoRendimento) {
+    private String dataAniversario;
+    private String dataDia = String.valueOf(LocalDate.now());
+
+    public ContaPoupanca(String banco, int numeroDaConta, int agencia, double saldo, String dataAniversario) {
         super(banco, numeroDaConta, agencia, saldo);
-        this.diaDoRendimento = diaDoRendimento;
+        this.dataAniversario = dataAniversario;
     }
 
-    public double getSaldo(){
-        String dia = formatarData.format(data.getTime());
-        int diaConvertido = Integer.parseInt(dia);
-        if (diaConvertido >= this.diaDoRendimento) {
-            return this.saldo *= TAXA_RENDIMENTO_MENSAL;
-        } else {
+    public double getSaldo() {
+        LocalDate localDateAniversario = LocalDate.parse(dataAniversario, DateTimeFormatter.ISO_DATE);
+        LocalDate localDateDia = LocalDate.parse(dataDia, DateTimeFormatter.ISO_DATE);
+        long diff = ChronoUnit.MONTHS.between(localDateAniversario.withDayOfMonth(1), localDateDia.withDayOfMonth(1));
+        if (localDateDia.isBefore(localDateAniversario.plusMonths(1))){
             return this.saldo;
+        } else {
+            double saldoJuros = this.saldo * Math.pow(TAXA_RENDIMENTO_MENSAL, diff);
+            return Math.round(saldoJuros*100.00)/100.00;
         }
     }
+
     @Override
-    public boolean sacar(double valor) {
+    public boolean getSaque(double valor) {
         if (valor > getSaldo()) {
             System.out.println("Saldo insuficiente para realizar a transação.");
             return false;
@@ -37,7 +42,7 @@ public class ContaPoupanca extends Conta {
     }
 
     @Override
-    public boolean transferir(Conta emissor, Conta destino, double valor) {
+    public boolean getTransferencia(Conta emissor, Conta destino, double valor) {
         if (getSaldo() < valor + getTaxaTransferencia()){
             System.out.println("Saldo insuficiente para realizar o saque.");
             return false;
@@ -55,7 +60,7 @@ public class ContaPoupanca extends Conta {
     public String toString() {
         return "Conta Poupanca {" +
                 super.toString() +
-                "Dia do rendimento mensal = " + diaDoRendimento +
+                "Dia do rendimento mensal = " + dataAniversario +
                 '}';
     }
 }

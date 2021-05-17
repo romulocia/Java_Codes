@@ -1,5 +1,6 @@
 package module08;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class MenuGerente {
@@ -51,7 +52,7 @@ public class MenuGerente {
                             "\n[3] Conta Salário");
 
                     opcao = scanner.nextInt();
-                    int numeroDaConta = 1000, agencia;
+                    int numeroDaConta = 1000, agencia, quantidadeDeSaques = 3;
                     double saldo, chequeEspecial;
                     String banco = NOME_BANCO, dataAniversario;
 
@@ -60,14 +61,14 @@ public class MenuGerente {
                             Cliente clienteValidado = clienteValido();
                             if (clienteValidado != null) {
                                 numeroDaConta += 1;
-                                System.out.println("Digite o número da agencia:");
+                                System.out.println("Digite o número da agência:");
                                 agencia = scanner.nextInt();
                                 System.out.println("Digite o saldo inicial:");
                                 saldo = scanner.nextDouble();
                                 System.out.println("Digite o valor do cheque especial:");
                                 chequeEspecial = scanner.nextDouble();
 
-                                MapContas.put(new ContaCorrente(numeroDaConta, agencia, banco, saldo, chequeEspecial), clienteValidado);
+                                MapContas.put(new ContaCorrente(banco, numeroDaConta, agencia, saldo, chequeEspecial), clienteValidado);
                                 for (Map.Entry<Conta, Cliente> listaContas : MapContas.entrySet()) {
                                     System.out.println(listaContas.getKey() + "\t\t" + listaContas.getValue());
                                 }
@@ -78,16 +79,14 @@ public class MenuGerente {
                             clienteValidado = clienteValido();
                             if (clienteValidado != null) {
                                 numeroDaConta += 1;
+                                dataAniversario = String.valueOf(LocalDate.now());
                                 System.out.println("Digite o numero da agencia:");
                                 agencia = scanner.nextInt();
                                 scanner.nextLine();
                                 System.out.println("Digite o saldo inicial:");
                                 saldo = scanner.nextDouble();
-                                scanner.nextLine();
-                                System.out.println("Digite a data de aniversário: (yyyy-mm-dd)");
-                                dataAniversario = scanner.nextLine();
 
-                                MapContas.put(new ContaPoupanca(numeroDaConta, agencia, banco, saldo, dataAniversario), clienteValidado);
+                                MapContas.put(new ContaPoupanca(banco, numeroDaConta, agencia, saldo, dataAniversario), clienteValidado);
                                 for (Map.Entry<Conta, Cliente> listaContas : MapContas.entrySet()) {
                                     System.out.println(listaContas.getKey() + "\t\t" + listaContas.getValue());
                                 }
@@ -104,7 +103,7 @@ public class MenuGerente {
                                 System.out.println("Digite o saldo inicial:");
                                 saldo = scanner.nextDouble();
 
-                                MapContas.put(new ContaSalario(numeroDaConta, agencia, banco, saldo), clienteValidado);
+                                MapContas.put(new ContaSalario(banco, numeroDaConta, agencia, saldo, quantidadeDeSaques), clienteValidado);
                                 for (Map.Entry<Conta, Cliente> listaContas : MapContas.entrySet()) {
                                     System.out.println(listaContas.getKey() + "\t\t" + listaContas.getValue());
                                 }

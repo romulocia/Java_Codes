@@ -37,6 +37,10 @@ public abstract class Conta {
         return 1.25;
     }
 
+    public double getLimiteSaques() {
+        return 3;
+    }
+
     public Conta(String banco, int numeroDaConta, int agencia, double saldo) {
         this.banco = banco;
         this.numeroDaConta = numeroDaConta;

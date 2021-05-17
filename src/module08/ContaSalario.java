@@ -14,12 +14,12 @@ public class ContaSalario extends Conta {
     }
 
     @Override
-    public boolean sacar(double valor) {
+    public boolean getSaque(double valor) {
         if (valor > saldo) {
             System.out.println("Saldo insuficiente para realizar a transação.");
             return false;
         } else {
-            if (this.quantidadeDeSaques < 3) {
+            if (this.quantidadeDeSaques <= getLimiteSaques()) {
                 this.quantidadeDeSaques++;
                 this.saldo -= valor;
                 System.out.println("Saque de R$ " + valor + " realizado com sucesso.");
@@ -31,14 +31,17 @@ public class ContaSalario extends Conta {
             }
         }
     }
-
     @Override
-    public boolean transferir(Conta emissor, Conta destino, double valor) {
+    public boolean getTransferencia(Conta emissor, Conta destino, double valor) {
         if (getSaldo() < valor + getTaxaTransferencia()){
+            System.out.println("Saldo insuficiente para realizar o saque.");
             return false;
         } else {
             emissor.saldo -= valor - getTaxaTransferencia();
             destino.saldo += valor;
+            System.out.println("Transferência de R$ " + valor + " realizado com sucesso.");
+            System.out.println("Taxa fixa de transferência: R$ " + getTaxaTransferencia());
+            System.out.println("Saldo atualizado: R$ " + getSaldo());
             return true;
         }
     }

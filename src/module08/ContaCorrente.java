@@ -17,7 +17,8 @@ public class ContaCorrente extends Conta {
         return this.saldo + this.chequeEspecial;
     }
 
-    public boolean sacar(double valor) {
+    @Override
+    public boolean getSaque(double valor) {
         if (valor > this.chequeEspecial + this.saldo) {
             System.out.println("Saldo insuficiente para realizar a transação.");
             return false;
