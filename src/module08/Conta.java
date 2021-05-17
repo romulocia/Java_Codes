@@ -5,48 +5,36 @@ public abstract class Conta {
     private int numeroDaConta;
     private int agencia;
     protected double saldo;
-    protected double taxaTransferencia;
+    protected double saque;
+    protected double deposito;
+    protected double transferencia;
 
-    public String getBanco() {
-        return banco;
-    }
-
-    public void setBanco(String banco) {
-        this.banco = banco;
-    }
 
     public int getNumeroDaConta() {
         return numeroDaConta;
-    }
-
-    public void setNumeroDaConta(int numeroDaConta) {
-        this.numeroDaConta = numeroDaConta;
     }
 
     public int getAgencia() {
         return agencia;
     }
 
-    public void setAgencia(int agencia) {
-        this.agencia = agencia;
+    public double getSaldo() {
+        return saldo;
     }
+
+    public abstract boolean getSaque(double valor);
+
+    public boolean getDeposito(double valor){
+        saldo += valor;
+        System.out.println("Depósito de R$ " + valor + " realizado com sucesso");
+        System.out.println("O saldo atualizado da conta é R$" + saldo);
+        return true;
+    }
+
+    public abstract boolean getTransferencia(Conta emissor, Conta destino, double valor);
 
     public double getTaxaTransferencia() {
         return 1.25;
-    }
-
-    public void setTaxaTransferencia(double taxaTransferencia) {
-        this.taxaTransferencia = taxaTransferencia;
-    }
-
-    public abstract boolean sacar(double valor);
-
-    public abstract boolean transferir(Conta emissor, Conta destino, double valor);
-
-    public void depositar(double valor) {
-        this.saldo += valor;
-        System.out.println("Depósito de R$ " + valor + " realizado com sucesso");
-        System.out.println("O saldo atualizado da conta é R$" + saldo);
     }
 
     public Conta(String banco, int numeroDaConta, int agencia, double saldo) {

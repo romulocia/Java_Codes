@@ -18,13 +18,13 @@ public class MenuGerente {
             System.out.println("--------------------------------------------" +
                     "\n*** Banco Mentorama ***" +
                     "\nMenu de opções:" +
-                    "\n[1]. Criar Cliente" +
-                    "\n[2]. Criar Conta" +
-                    "\n[3]. Depositar" +
-                    "\n[4]. Sacar" +
-                    "\n[5]. Transferir Valores" +
-                    "\n[6]. Mostrar montante disponível nas contas" +
-                    "\n[7]. Sair" +
+                    "\n[1] Criar Cliente" +
+                    "\n[2] Criar Conta" +
+                    "\n[3] Depositar" +
+                    "\n[4] Sacar" +
+                    "\n[5] Transferir Valores" +
+                    "\n[6] Mostrar montante disponível nas contas" +
+                    "\n[7] Sair" +
                     "\nEscolha a opção desejada:");
             opcao = scanner.nextInt();
             System.out.println("--------------------------------------------");
@@ -46,9 +46,9 @@ public class MenuGerente {
 
                 case 2:
                     System.out.println("Escolha o tipo de conta a ser criada:" +
-                            "\n[1]. Conta Corrente" +
-                            "\n[2]. Conta Poupança" +
-                            "\n[3]. Conta Salário");
+                            "\n[1] Conta Corrente" +
+                            "\n[2] Conta Poupança" +
+                            "\n[3] Conta Salário");
 
                     opcao = scanner.nextInt();
                     int numeroDaConta = 1000, agencia;
@@ -140,7 +140,7 @@ public class MenuGerente {
                         int valor = scanner.nextInt();
                         System.out.println("Digite as informações da conta de destino");
                         Conta destino = contaValida();
-                        conta.getTransferencia(destino, valor);
+                        conta.getTransferencia(emissor, destino, valor);
                     }
                     break;
                 case 6:
@@ -161,7 +161,7 @@ public class MenuGerente {
 
     public static Cliente clienteValido() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Digite o cpf de um cliente cadastrado:");
+        System.out.println("Digite o CPF de um cliente cadastrado:");
         long cpfCadastrado = scanner.nextLong();
         for (Cliente cliente : listaClientes) {
             if (Objects.equals(cliente.getCpf(), cpfCadastrado)) {
@@ -175,20 +175,13 @@ public class MenuGerente {
 
     public static Conta contaValida() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Digite o numero da cpf:");
-        long cpfCadastrado = scanner.nextLong();
-        System.out.println("Digite o numero da conta:");
+        System.out.println("Digite o número da conta:");
         int numeroConta = scanner.nextInt();
-        System.out.println("Digite o numero da agencia:");
+        System.out.println("Digite o número da agencia:");
         int agencia = scanner.nextInt();
-        System.out.println("Digite o banco:");
-        scanner.nextLine();
-        String banco = scanner.nextLine();
         for (Map.Entry<Conta, Cliente> conta : MapContas.entrySet()) {
             if (conta.getKey().getAgencia() == agencia &&
-                    conta.getKey().getNumeroDaConta() == numeroConta &&
-                    conta.getKey().getBanco().equals(banco) &&
-                    conta.getValue().getCpf() == (cpfCadastrado)) {
+                    conta.getKey().getNumeroDaConta() == numeroConta) {
                 System.out.println(conta.toString() + " selecionado.");
                 return conta.getKey();
             }

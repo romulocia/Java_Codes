@@ -8,6 +8,10 @@ public class ContaCorrente extends Conta {
         this.chequeEspecial = chequeEspecial;
     }
 
+    public double getChequeEspecial() {
+        return chequeEspecial;
+    }
+
     @Override
     public double getSaldo() {
         return this.saldo + this.chequeEspecial;
@@ -26,10 +30,10 @@ public class ContaCorrente extends Conta {
     }
 
     @Override
-    public boolean transferir(Conta emissor, Conta destino, double valor) {
+    public boolean getTransferencia(Conta emissor, Conta destino, double valor) {
         if (getSaldo() < valor + getTaxaTransferencia()){
             System.out.println("Saldo insuficiente para realizar o saque.");
-        return false;
+            return false;
         } else {
             emissor.saldo -= valor - getTaxaTransferencia();
             destino.saldo += valor;
