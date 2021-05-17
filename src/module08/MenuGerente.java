@@ -15,7 +15,7 @@ public class MenuGerente {
         MapContas = new HashMap();
 
         int opcao;
-        int numeroDaConta = 1000 , agencia, quantidadeDeSaques = 3;
+        int numeroDaConta = 1 , agencia, quantidadeDeSaques = 3;
         double saldo, chequeEspecial;
         String banco = NOME_BANCO, dataAniversario;
 
