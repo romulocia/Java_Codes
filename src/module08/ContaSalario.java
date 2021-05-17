@@ -31,13 +31,14 @@ public class ContaSalario extends Conta {
             }
         }
     }
+
     @Override
     public boolean getTransferencia(Conta destino, double valor) {
         if (getSaldo() < valor + getTaxaTransferencia()) {
             System.out.println("Saldo insuficiente para realizar o saque.");
             return false;
         } else {
-            this.saldo = this.getSaldo() - valor - getTaxaTransferencia();
+            this.saldo = this.saldo - valor - getTaxaTransferencia();
             destino.saldo += valor;
             System.out.println("Transferência de R$ " + valor + " realizado com sucesso.");
             System.out.println("Taxa fixa de transferência: R$ " + getTaxaTransferencia());

@@ -47,7 +47,7 @@ public class ContaPoupanca extends Conta {
             System.out.println("Saldo insuficiente para realizar o saque.");
             return false;
         } else {
-            this.saldo = this.getSaldo() - valor - getTaxaTransferencia();
+            this.saldo = saldo - valor - getTaxaTransferencia();
             destino.saldo += valor;
             System.out.println("Transferência de R$ " + valor + " realizado com sucesso.");
             System.out.println("Taxa fixa de transferência: R$ " + getTaxaTransferencia());
@@ -55,7 +55,6 @@ public class ContaPoupanca extends Conta {
             return true;
         }
     }
-
 
     @Override
     public String toString() {

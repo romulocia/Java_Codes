@@ -13,7 +13,11 @@ public class MenuGerente {
         Scanner scanner = new Scanner(System.in);
         listaClientes = new ArrayList();
         MapContas = new HashMap();
+
         int opcao;
+        int numeroDaConta = 1000 , agencia, quantidadeDeSaques = 3;
+        double saldo, chequeEspecial;
+        String banco = NOME_BANCO, dataAniversario;
 
         do {
             System.out.println("--------------------------------------------" +
@@ -54,15 +58,13 @@ public class MenuGerente {
                                 "\n[4] Voltar ao Menu principal");
 
                         opcao = scanner.nextInt();
-                        int numeroDaConta = 1000, agencia, quantidadeDeSaques = 3;
-                        double saldo, chequeEspecial;
-                        String banco = NOME_BANCO, dataAniversario;
+                        numeroDaConta += 1;
 
                         switch (opcao) {
+
                             case 1:
                                 Cliente clienteValidado = clienteValido();
                                 if (clienteValidado != null) {
-                                    numeroDaConta += 1;
                                     System.out.println("Digite o número da agência:");
                                     agencia = scanner.nextInt();
                                     System.out.println("Digite o saldo inicial:");
@@ -80,7 +82,6 @@ public class MenuGerente {
                             case 2:
                                 clienteValidado = clienteValido();
                                 if (clienteValidado != null) {
-                                    numeroDaConta += 1;
                                     dataAniversario = String.valueOf(LocalDate.now());
                                     System.out.println("Digite o numero da agencia:");
                                     agencia = scanner.nextInt();
@@ -98,7 +99,6 @@ public class MenuGerente {
                             case 3:
                                 clienteValidado = clienteValido();
                                 if (clienteValidado != null) {
-                                    numeroDaConta += 1;
                                     System.out.println("Digite o numero da agencia:");
                                     agencia = scanner.nextInt();
                                     scanner.nextLine();
@@ -113,7 +113,6 @@ public class MenuGerente {
                                 break;
 
                             case 4:
-                                scanner.close();
                                 break;
 
                             default:
