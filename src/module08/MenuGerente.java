@@ -74,7 +74,7 @@ public class MenuGerente {
 
                                     MapContas.put(new ContaCorrente(banco, numeroDaConta, agencia, saldo, chequeEspecial), clienteValidado);
                                     for (Map.Entry<Conta, Cliente> listaContas : MapContas.entrySet()) {
-                                        System.out.println(listaContas.getKey() + "\t\t" + listaContas.getValue());
+                                        System.out.println(listaContas.getValue() + "\t\t" + listaContas.getKey());
                                     }
                                 }
                                 break;
@@ -91,7 +91,7 @@ public class MenuGerente {
 
                                     MapContas.put(new ContaPoupanca(banco, numeroDaConta, agencia, saldo, dataAniversario), clienteValidado);
                                     for (Map.Entry<Conta, Cliente> listaContas : MapContas.entrySet()) {
-                                        System.out.println(listaContas.getKey() + "\t\t" + listaContas.getValue());
+                                        System.out.println(listaContas.getValue() + "\t\t" + listaContas.getKey());
                                     }
                                 }
                                 break;
@@ -107,7 +107,7 @@ public class MenuGerente {
 
                                     MapContas.put(new ContaSalario(banco, numeroDaConta, agencia, saldo, quantidadeDeSaques), clienteValidado);
                                     for (Map.Entry<Conta, Cliente> listaContas : MapContas.entrySet()) {
-                                        System.out.println(listaContas.getKey() + "\t\t" + listaContas.getValue());
+                                        System.out.println(listaContas.getValue() + "\t\t" + listaContas.getKey());
                                     }
                                 }
                                 break;
