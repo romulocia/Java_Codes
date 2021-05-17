@@ -74,7 +74,7 @@ public class MenuGerente {
 
                                     MapContas.put(new ContaCorrente(banco, numeroDaConta, agencia, saldo, chequeEspecial), clienteValidado);
                                     for (Map.Entry<Conta, Cliente> listaContas : MapContas.entrySet()) {
-                                        System.out.println(listaContas.getValue() + "\t\t" + listaContas.getKey());
+                                        System.out.println(listaContas.getValue() + "\n" + listaContas.getKey());
                                     }
                                 }
                                 break;
@@ -91,7 +91,7 @@ public class MenuGerente {
 
                                     MapContas.put(new ContaPoupanca(banco, numeroDaConta, agencia, saldo, dataAniversario), clienteValidado);
                                     for (Map.Entry<Conta, Cliente> listaContas : MapContas.entrySet()) {
-                                        System.out.println(listaContas.getValue() + "\t\t" + listaContas.getKey());
+                                        System.out.println(listaContas.getValue() + "\n" + listaContas.getKey());
                                     }
                                 }
                                 break;
@@ -107,7 +107,7 @@ public class MenuGerente {
 
                                     MapContas.put(new ContaSalario(banco, numeroDaConta, agencia, saldo, quantidadeDeSaques), clienteValidado);
                                     for (Map.Entry<Conta, Cliente> listaContas : MapContas.entrySet()) {
-                                        System.out.println(listaContas.getValue() + "\t\t" + listaContas.getKey());
+                                        System.out.println(listaContas.getValue() + "\n" + listaContas.getKey());
                                     }
                                 }
                                 break;
@@ -159,7 +159,7 @@ public class MenuGerente {
                     break;
 
                 case 7:
-                    System.out.println("Obrigado por estar conosco. Até logo.");
+                    System.out.println("Programa encerrado!");
                     scanner.close();
                     break;
 
@@ -176,7 +176,7 @@ public class MenuGerente {
         long cpfCadastrado = scanner.nextLong();
         for (Cliente cliente : listaClientes) {
             if (Objects.equals(cliente.getCpf(), cpfCadastrado)) {
-                System.out.println(cliente.toString() + " selecionado.");
+                System.out.println(cliente.toString() + " Selecionado.");
                 return cliente;
             }
         }
@@ -193,7 +193,7 @@ public class MenuGerente {
         for (Map.Entry<Conta, Cliente> conta : MapContas.entrySet()) {
             if (conta.getKey().getAgencia() == agencia &&
                     conta.getKey().getNumeroDaConta() == numeroConta) {
-                System.out.println(conta.toString() + " selecionado.");
+                System.out.println(conta.toString() + " Selecionada.");
                 return conta.getKey();
             }
         }

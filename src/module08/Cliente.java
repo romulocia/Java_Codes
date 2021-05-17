@@ -27,6 +27,6 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "\n>>> Cliente: " + nome + ", CPF: " + cpf + ". ";
+        return "\n>>> Cliente: " + nome + ", CPF: " + cpf + ".";
     }
 }
