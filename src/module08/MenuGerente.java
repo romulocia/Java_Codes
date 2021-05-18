@@ -5,8 +5,8 @@ import java.util.*;
 
 public class MenuGerente {
     private static final String NOME_BANCO = "Mentorama";
-    protected static ArrayList<Cliente> listaClientes;
-    protected static ArrayList<ContaCorrente> listaContaCorrente;
+    protected static List<Cliente> listaClientes;
+    protected static List<ContaCorrente> listaContaCorrente;
     protected static HashMap<Conta, Cliente> MapContas;
 
     public static void main(String[] args) {

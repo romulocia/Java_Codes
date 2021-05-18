@@ -5,10 +5,6 @@ public abstract class Conta {
     private int numeroDaConta;
     private int agencia;
     protected double saldo;
-    protected double saque;
-    protected double deposito;
-    protected double transferencia;
-
 
     public int getNumeroDaConta() {
         return numeroDaConta;
