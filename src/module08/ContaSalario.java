@@ -51,7 +51,7 @@ public class ContaSalario extends Conta {
     public String toString() {
         return  "Conta Salário {" +
                 super.toString() +
-                "Quantidade de Saques disponíveis = " + (quantidadeDeSaques -1) +
+                "Quantidade de Saques disponíveis = " + quantidadeDeSaques +
                 '}';
     }
 }
