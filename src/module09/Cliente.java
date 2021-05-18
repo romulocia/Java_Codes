@@ -1,34 +1,40 @@
 package module09;
 
 public class Cliente implements autenticaCliente {
+    private boolean status;
     private String nome;
-    private long cpf;
+    private String senha;
 
-    public Cliente(String nome, long cpf) {
+    public Cliente(boolean status, String nome, String senha) {
+        this.status = status;
         this.nome = nome;
-        this.cpf = cpf;
+        this.senha = senha;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public long getCpf() {
-        return cpf;
+    public String getSenha() {
+        return senha;
     }
 
     @Override
     public String toString() {
-        return "\n>>> Cliente: " + nome + ", CPF: " + cpf + ".";
+        return "Cliente {" +
+                "status = " + status +
+                ", nome = " + nome +
+                ", senha = " + senha +
+                '}';
     }
 
     @Override
-    public boolean autentica(long cpf) {
-        if (this.cpf != cpf){
-            System.out.println("CPF não encontrado");
+    public boolean autentica(String senha) {
+        if (this.senha != senha){
+            System.out.println("Não autenticada");
             return false;
         } else {
-            System.out.println("CPF encontrado");
+            System.out.println("Autenticado!");
             return true;
         }
     }
