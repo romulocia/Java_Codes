@@ -15,7 +15,7 @@ public class MenuGerente {
         MapContas = new HashMap();
 
         int opcao;
-        int numeroDaConta = 1 , agencia, quantidadeDeSaques = 3;
+        int numeroDaConta = 1000 , agencia, quantidadeDeSaques = 3;
         double saldo, chequeEspecial;
         String banco = NOME_BANCO, dataAniversario;
 
@@ -58,7 +58,6 @@ public class MenuGerente {
                                 "\n[4] Voltar ao Menu principal");
 
                         opcao = scanner.nextInt();
-                        numeroDaConta += 1;
 
                         switch (opcao) {
 
@@ -76,6 +75,7 @@ public class MenuGerente {
                                     for (Map.Entry<Conta, Cliente> listaContas : MapContas.entrySet()) {
                                         System.out.println(listaContas.getValue() + "\n" + listaContas.getKey());
                                     }
+                                    numeroDaConta += 1;
                                 }
                                 break;
 
@@ -93,6 +93,7 @@ public class MenuGerente {
                                     for (Map.Entry<Conta, Cliente> listaContas : MapContas.entrySet()) {
                                         System.out.println(listaContas.getValue() + "\n" + listaContas.getKey());
                                     }
+                                    numeroDaConta += 1;
                                 }
                                 break;
 
@@ -109,6 +110,7 @@ public class MenuGerente {
                                     for (Map.Entry<Conta, Cliente> listaContas : MapContas.entrySet()) {
                                         System.out.println(listaContas.getValue() + "\n" + listaContas.getKey());
                                     }
+                                    numeroDaConta += 1;
                                 }
                                 break;
 

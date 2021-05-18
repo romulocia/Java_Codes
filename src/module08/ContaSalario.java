@@ -19,8 +19,8 @@ public class ContaSalario extends Conta {
             System.out.println("Saldo insuficiente para realizar a transação.");
             return false;
         } else {
-            if (this.quantidadeDeSaques <= getLimiteSaques()) {
-                this.quantidadeDeSaques++;
+            if (this.quantidadeDeSaques <= getLimiteSaques() && this.quantidadeDeSaques > 0) {
+                this.quantidadeDeSaques--;
                 this.saldo -= valor;
                 System.out.println("Saque de R$ " + valor + " realizado com sucesso.");
                 System.out.println("Saldo atualizado: R$ " + getSaldo());
@@ -51,7 +51,7 @@ public class ContaSalario extends Conta {
     public String toString() {
         return  "Conta Salário {" +
                 super.toString() +
-                "Quantidade De Saques = " + quantidadeDeSaques +
+                "Quantidade de Saques disponíveis = " + (quantidadeDeSaques -1) +
                 '}';
     }
 }

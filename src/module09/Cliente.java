@@ -21,4 +21,15 @@ public class Cliente implements autenticaCliente {
     public String toString() {
         return "\n>>> Cliente: " + nome + ", CPF: " + cpf + ".";
     }
+
+    @Override
+    public boolean autentica(long cpf) {
+        if (this.cpf != cpf){
+            System.out.println("CPF não encontrado");
+            return false;
+        } else {
+            System.out.println("CPF encontrado");
+            return true;
+        }
+    }
 }
