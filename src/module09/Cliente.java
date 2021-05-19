@@ -4,11 +4,13 @@ public class Cliente implements autenticaCliente {
     private boolean status;
     private String nome;
     private String senha;
+    private int compras;
 
-    public Cliente(boolean status, String nome, String senha) {
+    public Cliente(boolean status, String nome, String senha, int compras) {
         this.status = status;
         this.nome = nome;
         this.senha = senha;
+        this.compras = compras;
     }
 
     public String getNome() {
@@ -19,12 +21,17 @@ public class Cliente implements autenticaCliente {
         return senha;
     }
 
+    public int getCompras() {
+        return this.compras;
+    }
+
     @Override
     public String toString() {
         return "Cliente {" +
                 "status = " + status +
                 ", nome = " + nome +
                 ", senha = " + senha +
+                ", compras = " + compras +
                 '}';
     }
 
