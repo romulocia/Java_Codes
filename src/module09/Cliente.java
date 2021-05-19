@@ -17,12 +17,24 @@ public class Cliente implements autenticaCliente {
         return nome;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public String getCPF() {
         return CPF;
     }
 
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
+    }
+
     public int getCompras() {
         return this.compras;
+    }
+
+    public void setCompras(int compras) {
+        this.compras = compras;
     }
 
     @Override

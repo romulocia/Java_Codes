@@ -1,6 +1,7 @@
 package module09;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -73,8 +74,8 @@ public class TestaConta {
                     System.out.println("Digite a quantidade de compras:");
                     int compras = scanner.nextInt();
 
-                    Cliente.add(new Cliente(status, nome, CPF, compras));
-                    Iterator it = Cliente.iterator();
+                    clientes.add(new Cliente(status, nome, CPF, compras));
+                    Iterator it = Cliente.interator();
                     System.out.println("\nLista dos Clientes Cadastrados:");
                     while (it.hasNext()) {
                         System.out.println(it.next().toString());
