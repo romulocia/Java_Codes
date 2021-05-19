@@ -8,15 +8,15 @@ import java.util.stream.Stream;
 public class TestaConta {
     public static void main(String[] args) {
 
-        Cliente c01 = new Cliente(true, "André", "111", 25);
-        Cliente c02 = new Cliente(true, "Breno", "222", 12);
-        Cliente c03 = new Cliente(true, "Carol", "333", 55);
-        Cliente c04 = new Cliente(true, "David", "444", 32);
-        Cliente c05 = new Cliente(true, "Elias", "555", 54);
-        Cliente c06 = new Cliente(true, "Fernanda", "666", 87);
-        Cliente c07 = new Cliente(true, "Gabriela", "777", 2);
-        Cliente c08 = new Cliente(true, "Heloisa", "888", 36);
-        Cliente c09 = new Cliente(true, "Isabel", "999", 8);
+        Cliente c01 = new Cliente(true, "André", "111", 0);
+        Cliente c02 = new Cliente(true, "Breno", "222", 0);
+        Cliente c03 = new Cliente(true, "Carol", "333", 0);
+        Cliente c04 = new Cliente(true, "David", "444", 0);
+        Cliente c05 = new Cliente(true, "Elias", "555", 0);
+        Cliente c06 = new Cliente(true, "Fernanda", "666", 0);
+        Cliente c07 = new Cliente(true, "Gabriela", "777", 0);
+        Cliente c08 = new Cliente(true, "Heloisa", "888", 0);
+        Cliente c09 = new Cliente(true, "Isabel", "999", 0);
 
         c09.autentica("jjj");
 
