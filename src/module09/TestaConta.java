@@ -115,8 +115,8 @@ public class TestaConta {
                 case 6:
                     System.out.println(">>> LISTA DE CLIENTES:");
                     clientes.stream()
-                            .sorted((c1, c2) -> c1.getNome().compareTo(c2.getNome()))
-                            .forEach(c -> System.out.println(c));
+                            .sorted(Comparator.comparing(Cliente::getNome))
+                            .forEach(System.out::println);
                     break;
 
                 case 7:
