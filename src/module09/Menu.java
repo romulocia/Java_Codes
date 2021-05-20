@@ -2,7 +2,7 @@ package module09;
 
 import java.util.*;
 
-public class TestaConta {
+public class Menu {
 
     public static final String SENHA_DE_ACESSO = "123";
 
@@ -12,15 +12,15 @@ public class TestaConta {
         MostraClientes mostra = new MostraClientes();
         int opcao;
 
-        clientes.add(new Cliente("123", "Zandré", "111", 12));
-        clientes.add(new Cliente("123", "Treno", "222", 45));
+        clientes.add(new Cliente("123", "Zenilda", "111", 12));
+        clientes.add(new Cliente("123", "Tuanio", "222", 45));
         clientes.add(new Cliente("123", "Carol", "333", 2));
         clientes.add(new Cliente("123", "David", "444", 15));
         clientes.add(new Cliente("123", "Elias", "555", 3));
         clientes.add(new Cliente("123", "Fernanda", "666", 8));
         clientes.add(new Cliente("123", "Gabriela", "777", 7));
         clientes.add(new Cliente("123", "Heloisa", "888", 48));
-        clientes.add(new Cliente("123", "Isabel", "999", 9));
+        clientes.add(new Cliente("123", "Gustavo", "999", 9));
         clientes.add(new Cliente("123", "Júlio", "000", 22));
 
         do {
