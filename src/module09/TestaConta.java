@@ -103,7 +103,7 @@ public class TestaConta {
                         String tentativaSenha = scanner.nextLine();
                         if (clienteSelecionado.autenticaSenha(tentativaSenha)) {
                             clienteSelecionado.setCompras(clienteSelecionado.getCompras() + numeroDeComprasAdicionais);
-                            System.out.println("Novas compras adicionadas com sucesso!" +
+                            System.out.println("Novas compras adicionadas com sucesso!\n" +
                                     ">>> Cliente: " + clienteSelecionado.getNome() +
                                     ", CPF = " + clienteSelecionado.getCPF() +
                                     ", Quantidade de compras = " + clienteSelecionado.getCompras() +
