@@ -12,8 +12,8 @@ public class TestaConta {
         MostraClientes mostra = new MostraClientes();
         int opcao;
 
-        clientes.add(new Cliente("123", "André", "111", 12));
-        clientes.add(new Cliente("123", "Breno", "222", 45));
+        clientes.add(new Cliente("123", "Zandré", "111", 12));
+        clientes.add(new Cliente("123", "Treno", "222", 45));
         clientes.add(new Cliente("123", "Carol", "333", 2));
         clientes.add(new Cliente("123", "David", "444", 15));
         clientes.add(new Cliente("123", "Elias", "555", 3));
@@ -114,7 +114,9 @@ public class TestaConta {
 
                 case 6:
                     System.out.println(">>> LISTA DE CLIENTES:");
-                    clientes.forEach(mostra);
+                    clientes.stream()
+                            .sorted((c1, c2) -> c1.getNome().compareTo(c2.getNome()))
+                            .forEach(c -> System.out.println(c));
                     break;
 
                 case 7:
