@@ -1,13 +1,14 @@
 package module09;
 
-public class Cliente implements autenticaCliente {
-    private boolean status;
+public class Cliente implements autenticaSenha {
+    private String senha;
     private String nome;
     private String CPF;
     private int compras;
 
-    public Cliente(boolean status, String nome, String CPF, int compras) {
-        this.status = status;
+
+    public Cliente(String senha, String nome, String CPF, int compras) {
+        this.senha = senha;
         this.nome = nome;
         this.CPF = CPF;
         this.compras = compras;
@@ -17,16 +18,8 @@ public class Cliente implements autenticaCliente {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public String getCPF() {
         return CPF;
-    }
-
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
     }
 
     public int getCompras() {
@@ -38,22 +31,20 @@ public class Cliente implements autenticaCliente {
     }
 
     @Override
+    public boolean autenticaSenha(String senha) {
+        if (!this.senha.equals(senha)) {
+            System.out.println("Senha Incorreta!\nConfira sua senha.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    @Override
     public String toString() {
         return ">>> Cliente: " + nome +
                 ", CPF = " + CPF +
                 ", Quantidade de compras = " + compras +
-                "status = " + status +
-                '}';
-    }
-
-    @Override
-    public boolean autentica(String CPF) {
-        if (this.CPF != CPF){
-            System.out.println("Não autenticada");
-            return false;
-        } else {
-            System.out.println("Autenticado!");
-            return true;
-        }
+                ".";
     }
 }
