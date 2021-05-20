@@ -1,6 +1,6 @@
 package module08;
 
-public class ContaCorrente extends Conta {
+public class ContaCorrente extends Conta implements Tributavel{
     private double chequeEspecial;
 
     public ContaCorrente(String banco, int numeroDaConta, int agencia, double saldo, double chequeEspecial) {
@@ -32,14 +32,14 @@ public class ContaCorrente extends Conta {
 
     @Override
     public boolean getTransferencia(Conta destino, double valor) {
-        if (getSaldo() < valor + getTaxaTransferencia()) {
+        if (getSaldo() < valor + getValorImposto()) {
             System.out.println("Saldo insuficiente para realizar o saque.");
             return false;
         } else {
-            this.saldo = this.saldo - valor - getTaxaTransferencia();
+            this.saldo = this.saldo - valor - getValorImposto();
             destino.saldo += valor;
             System.out.println("Transferência de R$ " + valor + " realizado com sucesso.");
-            System.out.println("Taxa fixa de transferência: R$ " + getTaxaTransferencia());
+            System.out.println("Taxa fixa de transferência: R$ " + getValorImposto());
             System.out.println("Saldo atualizado: R$ " + getSaldo());
             return true;
         }
@@ -51,6 +51,11 @@ public class ContaCorrente extends Conta {
                 super.toString() +
                 "Cheque Especial = " + chequeEspecial +
                 '}';
+    }
+
+    @Override
+    public double getValorImposto() {
+        return this.getSaldo() * 0.01;
     }
 }
 

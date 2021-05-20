@@ -1,13 +1,14 @@
 package module09;
 
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class TestaConta {
+    protected static List<Cliente> clientes;
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -40,13 +41,13 @@ public class TestaConta {
         do {
             System.out.println("--------------------------------------------" +
                     "\n*** Consulta de Clientes ***" +
-                    "\n    ** Menu de Opções **\n" +
+                    "\n    ** Menu de Opções **" +
                     "\n[1] Cliente que fez MAIS compras." +
                     "\n[2] Cliente que fez MENOS compras." +
                     "\n[3] Média de compras dos clientes." +
                     "\n[4] Cadastrar novo cliente." +
                     "\n[5] Adicionar compras a cliente" +
-                    "\n[6] Sair\n");
+                    "\n[6] Sair");
             System.out.println("--------------------------------------------" +
                     "\nEscolha a opção desejada: ");
             opcao = scanner.nextInt();
@@ -73,13 +74,9 @@ public class TestaConta {
                     String CPF = scanner.nextLine();
                     System.out.println("Digite a quantidade de compras:");
                     int compras = scanner.nextInt();
-
                     clientes.add(new Cliente(status, nome, CPF, compras));
-                    Iterator it = Cliente.interator();
                     System.out.println("\nLista dos Clientes Cadastrados:");
-                    while (it.hasNext()) {
-                        System.out.println(it.next().toString());
-                    }
+                    System.out.println(clientes4);
                     break;
 
                 case 5:

@@ -29,10 +29,6 @@ public abstract class Conta {
 
     public abstract boolean getTransferencia(Conta destino, double valor);
 
-    public double getTaxaTransferencia() {
-        return 1.25;
-    }
-
     public double getLimiteSaques() {
         return 3;
     }
