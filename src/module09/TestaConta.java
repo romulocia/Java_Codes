@@ -54,20 +54,19 @@ public class TestaConta {
 
             switch (opcao) {
                 case 1:
-                    System.out.println();
+                    System.out.println("pera");
                     break;
 
                 case 2:
-                    System.out.println();
+                    System.out.println("sei la");
                     break;
 
                 case 3:
-                    System.out.println();
+                    System.out.println("ummm");
                     break;
 
                 case 4:
                     status = true;
-                    scanner.nextLine();
                     System.out.println("Digite o nome do cliente:");
                     String nome = scanner.nextLine();
                     System.out.println("Digite o CPF do cliente:");
@@ -76,11 +75,11 @@ public class TestaConta {
                     int compras = scanner.nextInt();
                     clientes.add(new Cliente(status, nome, CPF, compras));
                     System.out.println("\nLista dos Clientes Cadastrados:");
-                    System.out.println(clientes4);
+
                     break;
 
                 case 5:
-                    System.out.println();
+                    System.out.println("sei n");
                     break;
 
                 case 6:

@@ -205,20 +205,20 @@ public class MenuGerente {
 
     public static Double MontanteTotal() {
         listaContaCorrente = new ArrayList<>();
-        double sum = 0;
-        double sumCheque = 0;
+        double saldoTotal = 0;
+        double creditoChequeEspecial = 0;
         for (Map.Entry<Conta, Cliente> saldoContas : MapContas.entrySet()) {
-            sum = MapContas.keySet()
+            saldoTotal = MapContas.keySet()
                     .stream()
                     .mapToDouble(Conta::getSaldo)
                     .sum();
             if (saldoContas.getKey().getClass().equals(ContaCorrente.class)) {
                 listaContaCorrente.add((ContaCorrente) saldoContas.getKey());
             }
-            sumCheque = listaContaCorrente.stream()
+            creditoChequeEspecial = listaContaCorrente.stream()
                     .mapToDouble(ContaCorrente::getChequeEspecial)
                     .sum();
         }
-        return sum - sumCheque;
+        return saldoTotal - creditoChequeEspecial;
     }
 }
