@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
-public class ContaPoupanca extends Conta {
+public class ContaPoupanca extends Conta implements Tributavel{
 
     public static final double TAXA_RENDIMENTO_MENSAL = 0.05;
     private String dataAniversario;
@@ -43,14 +43,14 @@ public class ContaPoupanca extends Conta {
 
     @Override
     public boolean getTransferencia(Conta destino, double valor) {
-        if (getSaldo() < valor + getTaxaTransferencia()) {
+        if (getSaldo() < valor + getValorImposto()) {
             System.out.println("Saldo insuficiente para realizar o saque.");
             return false;
         } else {
-            this.saldo = saldo - valor - getTaxaTransferencia();
+            this.saldo = saldo - valor - getValorImposto();
             destino.saldo += valor;
             System.out.println("Transferência de R$ " + valor + " realizado com sucesso.");
-            System.out.println("Taxa fixa de transferência: R$ " + getTaxaTransferencia());
+            System.out.println("Taxa fixa de transferência: R$ " + getValorImposto());
             System.out.println("Saldo atualizado: R$ " + getSaldo());
             return true;
         }
@@ -62,5 +62,10 @@ public class ContaPoupanca extends Conta {
                 super.toString() +
                 "Dia do rendimento mensal = " + dataAniversario +
                 '}';
+    }
+
+    @Override
+    public double getValorImposto() {
+        return - 0.75;
     }
 }
