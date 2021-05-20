@@ -12,16 +12,16 @@ public class TestaConta {
         MostraClientes mostra = new MostraClientes();
         int opcao;
 
-        clientes.add(new Cliente("1a2b3c", "André", "111", 12));
-        clientes.add(new Cliente("1a2b3c", "Breno", "222", 45));
-        clientes.add(new Cliente("1a2b3c", "Carol", "333", 2));
-        clientes.add(new Cliente("1a2b3c", "David", "444", 15));
-        clientes.add(new Cliente("1a2b3c", "Elias", "555", 3));
-        clientes.add(new Cliente("1a2b3c", "Fernanda", "666", 8));
-        clientes.add(new Cliente("1a2b3c", "Gabriela", "777", 7));
-        clientes.add(new Cliente("1a2b3c", "Heloisa", "888", 48));
-        clientes.add(new Cliente("1a2b3c", "Isabel", "999", 9));
-        clientes.add(new Cliente("1a2b3c", "Júlio", "000", 22));
+        clientes.add(new Cliente("123", "André", "111", 12));
+        clientes.add(new Cliente("123", "Breno", "222", 45));
+        clientes.add(new Cliente("123", "Carol", "333", 2));
+        clientes.add(new Cliente("123", "David", "444", 15));
+        clientes.add(new Cliente("123", "Elias", "555", 3));
+        clientes.add(new Cliente("123", "Fernanda", "666", 8));
+        clientes.add(new Cliente("123", "Gabriela", "777", 7));
+        clientes.add(new Cliente("123", "Heloisa", "888", 48));
+        clientes.add(new Cliente("123", "Isabel", "999", 9));
+        clientes.add(new Cliente("123", "Júlio", "000", 22));
 
         do {
             Optional<Cliente> maiorNumeroDeCompras = clientes.stream().max(Comparator.comparing(Cliente::getCompras));
