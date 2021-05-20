@@ -22,11 +22,6 @@ public class TestaConta {
         clientes.add(new Cliente("1a2b3c", "Heloisa", "888", 48));
         clientes.add(new Cliente("1a2b3c", "Isabel", "999", 9));
         clientes.add(new Cliente("1a2b3c", "Júlio", "000", 22));
-        //clientes.forEach(cliente -> System.out.println(cliente.getNome() + "\t" + cliente.getCPF() + "\t" + cliente.getCompras()));
-        //Stream<Cliente> clienteStream = clientes.stream().filter(cliente -> cliente.getCPF().equals("888"));
-        //List<Cliente> selecionados = clienteStream.collect(Collectors.toList());
-        //selecionados.forEach(cliente -> System.out.println(cliente.getNome()));
-
 
         do {
             Optional<Cliente> maiorNumeroDeCompras = clientes.stream().max(Comparator.comparing(Cliente::getCompras));
@@ -57,7 +52,7 @@ public class TestaConta {
                     break;
 
                 case 2:
-                    System.out.println("Cliente com maior número de compras:\n" +
+                    System.out.println("Cliente com menor número de compras:\n" +
                             ">>> Cliente: " + menorNumeroDeCompras.get().getNome() +
                             ", CPF = " + menorNumeroDeCompras.get().getCPF() +
                             ", Quantidade de compras = " + menorNumeroDeCompras.get().getCompras());
