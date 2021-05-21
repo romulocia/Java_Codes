@@ -207,6 +207,7 @@ public class MenuGerente {
             System.out.println(contaClienteEntry + " Selecionada.");
             if (contaClienteEntry.getKey().getAgencia() == agencia &&
                     contaClienteEntry.getKey().getNumeroDaConta() == numeroConta) {
+                System.out.println(contaClienteEntry + " selecionado.");
                 return contaClienteEntry.getKey();
             }
         }
