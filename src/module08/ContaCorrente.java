@@ -55,7 +55,7 @@ public class ContaCorrente extends Conta implements Tributavel{
 
     @Override
     public double getValorImposto() {
-        return - 10;
+        return - 1;
     }
 }
 

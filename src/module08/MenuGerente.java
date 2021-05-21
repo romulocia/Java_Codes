@@ -30,9 +30,10 @@ public class MenuGerente {
                     "\n[5] Transferir Valores" +
                     "\n[6] Mostrar montante disponível nas contas" +
                     "\n[7] Sair" +
-                    "\nEscolha a opção desejada:");
+                    "\nEscolha a opção desejada:" +
+                    "\n--------------------------------------------");
+
             opcao = scanner.nextInt();
-            System.out.println("--------------------------------------------");
             switch (opcao) {
                 case 1:
                     scanner.nextLine();
@@ -49,12 +50,13 @@ public class MenuGerente {
 
                 case 2:
                     do {
-                        System.out.println("Escolha o tipo de conta a ser criada:" +
+                        System.out.println("--------------------------------------------" +
+                                "\nEscolha o tipo de conta a ser criada:" +
                                 "\n[1] Conta Corrente" +
                                 "\n[2] Conta Poupança" +
                                 "\n[3] Conta Salário" +
-                                "\n[4] Voltar ao Menu principal");
-
+                                "\n[4] Voltar ao Menu principal" +
+                                "\n--------------------------------------------");
                         opcao = scanner.nextInt();
 
                         switch (opcao) {
@@ -71,7 +73,7 @@ public class MenuGerente {
                                     contaClienteHashtable.put(new ContaCorrente(banco, numeroDaConta, agencia, saldo, chequeEspecial), clienteValidado);
                                     for (Map.Entry<Conta, Cliente> contaClienteEntry : contaClienteHashtable.entrySet()) {
                                         if (contaClienteEntry.getKey().getNumeroDaConta() == numeroDaConta) {
-                                            System.out.println("Conta criada com sucesso!" +
+                                            System.out.println("Conta criada com sucesso!\n" +
                                                     contaClienteEntry.getValue() + "\n" +
                                                     contaClienteEntry.getKey());
                                         }
@@ -92,7 +94,7 @@ public class MenuGerente {
                                     contaClienteHashtable.put(new ContaPoupanca(banco, numeroDaConta, agencia, saldo, dataAniversario), clienteValidado);
                                     for (Map.Entry<Conta, Cliente> contaClienteEntry : contaClienteHashtable.entrySet()) {
                                         if (contaClienteEntry.getKey().getNumeroDaConta() == numeroDaConta) {
-                                            System.out.println("Conta criada com sucesso!" +
+                                            System.out.println("Conta criada com sucesso!\n" +
                                                     contaClienteEntry.getValue() + "\n" +
                                                     contaClienteEntry.getKey());
                                         }
@@ -112,7 +114,7 @@ public class MenuGerente {
                                     contaClienteHashtable.put(new ContaSalario(banco, numeroDaConta, agencia, saldo, quantidadeDeSaques), clienteValidado);
                                     for (Map.Entry<Conta, Cliente> contaClienteEntry : contaClienteHashtable.entrySet()) {
                                         if (contaClienteEntry.getKey().getNumeroDaConta() == numeroDaConta) {
-                                            System.out.println("Conta criada com sucesso!" +
+                                            System.out.println("Conta criada com sucesso!\n" +
                                                     contaClienteEntry.getValue() + "\n" +
                                                     contaClienteEntry.getKey());
                                         }
@@ -204,10 +206,9 @@ public class MenuGerente {
         System.out.println("Digite o número da agencia:");
         int agencia = scanner.nextInt();
         for (Map.Entry<Conta, Cliente> contaClienteEntry : contaClienteHashtable.entrySet()) {
-            System.out.println(contaClienteEntry + " Selecionada.");
             if (contaClienteEntry.getKey().getAgencia() == agencia &&
                     contaClienteEntry.getKey().getNumeroDaConta() == numeroConta) {
-                System.out.println(contaClienteEntry + " selecionado.");
+                System.out.println(contaClienteEntry.getValue() + "Selecionado\n" + contaClienteEntry.getKey());
                 return contaClienteEntry.getKey();
             }
         }
