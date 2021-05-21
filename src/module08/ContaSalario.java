@@ -38,7 +38,7 @@ public class ContaSalario extends Conta implements Tributavel {
             System.out.println("Saldo insuficiente para realizar o saque.");
             return false;
         } else {
-            this.saldo = this.saldo - valor - getValorImposto();
+            this.saldo = this.saldo - valor + getValorImposto();
             destino.saldo += valor;
             System.out.println("Transferência de R$ " + valor + " realizado com sucesso.");
             System.out.println("Taxa fixa de transferência: R$ " + getValorImposto());

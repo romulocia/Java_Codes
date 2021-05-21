@@ -100,8 +100,8 @@ public class Menu {
                         int numeroDeComprasAdicionais = scanner.nextInt();
                         scanner.nextLine();
                         System.out.print("Digite a senha:");
-                        String tentativaSenha = scanner.nextLine();
-                        if (clienteSelecionado.autenticaSenha(tentativaSenha)) {
+                        String testeSenha = scanner.nextLine();
+                        if (clienteSelecionado.autenticaSenha(testeSenha)) {
                             clienteSelecionado.setCompras(clienteSelecionado.getCompras() + numeroDeComprasAdicionais);
                             System.out.println("Novas compras adicionadas com sucesso!\n" +
                                     ">>> Cliente: " + clienteSelecionado.getNome() +

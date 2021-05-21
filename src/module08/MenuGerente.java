@@ -6,6 +6,7 @@ import java.util.*;
 public class MenuGerente {
     private static final String NOME_BANCO = "Mentorama";
     protected static List<Cliente> clientes;
+    protected static List<ContaCorrente> listContaCorrente;
     protected static Hashtable<Conta, Cliente> contaClienteHashtable;
 
     public static void main(String[] args) {
@@ -14,7 +15,7 @@ public class MenuGerente {
         contaClienteHashtable = new Hashtable<>();
 
         int opcao;
-        int numeroDaConta = 1000 , agencia, quantidadeDeSaques = 3;
+        int numeroDaConta = 1000, agencia, quantidadeDeSaques = 3;
         double saldo, chequeEspecial;
         String banco = NOME_BANCO, dataAniversario;
 
@@ -39,13 +40,11 @@ public class MenuGerente {
                     String nome = scanner.nextLine();
                     System.out.println("Digite o CPF do cliente:");
                     long cpf = scanner.nextLong();
-
+                    System.out.println("Novo cliente cadastrado com sucesso!\n" +
+                            ">>> Cliente: " + nome +
+                            ", CPF = " + cpf +
+                            ".");
                     clientes.add(new Cliente(nome, cpf));
-                    Iterator it = clientes.iterator();
-                    System.out.println("\nLista dos Clientes Cadastrados:");
-                    while (it.hasNext()) {
-                        System.out.println(it.next().toString());
-                    }
                     break;
 
                 case 2:
@@ -69,10 +68,11 @@ public class MenuGerente {
                                     saldo = scanner.nextDouble();
                                     System.out.println("Digite o valor do cheque especial:");
                                     chequeEspecial = scanner.nextDouble();
-
                                     contaClienteHashtable.put(new ContaCorrente(banco, numeroDaConta, agencia, saldo, chequeEspecial), clienteValidado);
-                                    for (Map.Entry<Conta, Cliente> listaContas : contaClienteHashtable.entrySet()) {
-                                        System.out.println(listaContas.getValue() + "\n" + listaContas.getKey());
+                                    for (Map.Entry<Conta, Cliente> contaClienteEntry : contaClienteHashtable.entrySet()) {
+                                        if (contaClienteEntry.getKey().getNumeroDaConta() == numeroDaConta) {
+                                            System.out.println("Conta Corrente criada com sucesso!\n" + contaClienteEntry);
+                                        }
                                     }
                                     numeroDaConta += 1;
                                 }
@@ -87,10 +87,11 @@ public class MenuGerente {
                                     scanner.nextLine();
                                     System.out.println("Digite o saldo inicial:");
                                     saldo = scanner.nextDouble();
-
                                     contaClienteHashtable.put(new ContaPoupanca(banco, numeroDaConta, agencia, saldo, dataAniversario), clienteValidado);
-                                    for (Map.Entry<Conta, Cliente> listaContas : contaClienteHashtable.entrySet()) {
-                                        System.out.println(listaContas.getValue() + "\n" + listaContas.getKey());
+                                    for (Map.Entry<Conta, Cliente> contaClienteEntry : contaClienteHashtable.entrySet()) {
+                                        if (contaClienteEntry.getKey().getNumeroDaConta() == numeroDaConta) {
+                                            System.out.println("Conta Poupança criada com sucesso!\n" + contaClienteEntry);
+                                        }
                                     }
                                     numeroDaConta += 1;
                                 }
@@ -104,10 +105,11 @@ public class MenuGerente {
                                     scanner.nextLine();
                                     System.out.println("Digite o saldo inicial:");
                                     saldo = scanner.nextDouble();
-
                                     contaClienteHashtable.put(new ContaSalario(banco, numeroDaConta, agencia, saldo, quantidadeDeSaques), clienteValidado);
-                                    for (Map.Entry<Conta, Cliente> listaContas : contaClienteHashtable.entrySet()) {
-                                        System.out.println(listaContas.getValue() + "\n" + listaContas.getKey());
+                                    for (Map.Entry<Conta, Cliente> contaClienteEntry : contaClienteHashtable.entrySet()) {
+                                        if (contaClienteEntry.getKey().getNumeroDaConta() == numeroDaConta) {
+                                            System.out.println("Conta Salário criada com sucesso!\n" + contaClienteEntry);
+                                        }
                                     }
                                     numeroDaConta += 1;
                                 }
@@ -157,6 +159,10 @@ public class MenuGerente {
                     break;
                 case 6:
                     System.out.println("O montante disponível no banco é R$" + MontanteTotal());
+                    System.out.println("Lista de contas: ");
+                    for (Map.Entry<Conta, Cliente> contaClienteEntry : contaClienteHashtable.entrySet()) {
+                        System.out.println(contaClienteEntry.getKey() + "\t\t" + contaClienteEntry.getValue());
+                    }
                     break;
 
                 case 7:
@@ -177,7 +183,7 @@ public class MenuGerente {
         long cpfCadastrado = scanner.nextLong();
         for (Cliente cliente : clientes) {
             if (Objects.equals(cliente.getCpf(), cpfCadastrado)) {
-                System.out.println(cliente.toString() + " Selecionado.");
+                System.out.println(cliente + " Selecionado.");
                 return cliente;
             }
         }
@@ -191,11 +197,11 @@ public class MenuGerente {
         int numeroConta = scanner.nextInt();
         System.out.println("Digite o número da agencia:");
         int agencia = scanner.nextInt();
-        for (Map.Entry<Conta, Cliente> conta : contaClienteHashtable.entrySet()) {
-            if (conta.getKey().getAgencia() == agencia &&
-                    conta.getKey().getNumeroDaConta() == numeroConta) {
-                System.out.println(conta.toString() + " Selecionada.");
-                return conta.getKey();
+        for (Map.Entry<Conta, Cliente> contaClienteEntry : contaClienteHashtable.entrySet()) {
+            System.out.println(contaClienteEntry + " Selecionada.");
+            if (contaClienteEntry.getKey().getAgencia() == agencia &&
+                    contaClienteEntry.getKey().getNumeroDaConta() == numeroConta) {
+                return contaClienteEntry.getKey();
             }
         }
         System.out.println("Conta não encontrada.");
@@ -203,18 +209,20 @@ public class MenuGerente {
     }
 
     public static Double MontanteTotal() {
-        List<ContaCorrente> listaContaCorrente = new ArrayList<>();
+        listContaCorrente = new ArrayList<>();
         double saldoTotal = 0;
         double creditoChequeEspecial = 0;
-        for (Map.Entry<Conta, Cliente> saldoContas : contaClienteHashtable.entrySet()) {
-            saldoTotal = contaClienteHashtable.keySet()
+        for (Map.Entry<Conta, Cliente> contaClienteEntry : contaClienteHashtable.entrySet()) {
+            saldoTotal = contaClienteHashtable
+                    .keySet()
                     .stream()
                     .mapToDouble(Conta::getSaldo)
                     .sum();
-            if (saldoContas.getKey().getClass().equals(ContaCorrente.class)) {
-                listaContaCorrente.add((ContaCorrente) saldoContas.getKey());
+            if (contaClienteEntry.getKey().getClass().equals(ContaCorrente.class)) {
+                listContaCorrente.add((ContaCorrente) contaClienteEntry.getKey());
             }
-            creditoChequeEspecial = listaContaCorrente.stream()
+            creditoChequeEspecial = listContaCorrente
+                    .stream()
                     .mapToDouble(ContaCorrente::getChequeEspecial)
                     .sum();
         }
