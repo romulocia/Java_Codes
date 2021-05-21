@@ -57,6 +57,6 @@ public class ContaSalario extends Conta implements Tributavel {
 
     @Override
     public double getValorImposto() {
-        return - 0.75;
+        return - 10;
     }
 }
