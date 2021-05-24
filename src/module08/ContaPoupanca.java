@@ -17,13 +17,13 @@ public class ContaPoupanca extends Conta implements Tributavel{
     }
 
     public double getSaldo() {
-        LocalDate localDateAniversario = LocalDate.parse(dataAniversario, DateTimeFormatter.ISO_DATE);
-        LocalDate localDateDia = LocalDate.parse(dataDia, DateTimeFormatter.ISO_DATE);
-        long diff = ChronoUnit.MONTHS.between(localDateAniversario.withDayOfMonth(1), localDateDia.withDayOfMonth(1));
-        if (localDateDia.isBefore(localDateAniversario.plusMonths(1))){
+        LocalDate dateAniversario = LocalDate.parse(dataAniversario, DateTimeFormatter.ISO_DATE);
+        LocalDate dateDia = LocalDate.parse(dataDia, DateTimeFormatter.ISO_DATE);
+        long diferencaTempo = ChronoUnit.MONTHS.between(dateAniversario.withDayOfMonth(1), dateDia.withDayOfMonth(1));
+        if (dateDia.isBefore(dateAniversario.plusMonths(1))){
             return this.saldo;
         } else {
-            double saldoJuros = this.saldo * Math.pow(TAXA_RENDIMENTO_MENSAL, diff);
+            double saldoJuros = this.saldo * Math.pow(TAXA_RENDIMENTO_MENSAL, diferencaTempo);
             return Math.round(saldoJuros*100.00)/100.00;
         }
     }
